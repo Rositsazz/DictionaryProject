@@ -9,5 +9,5 @@ Dictionary - A project using Trie
 
 ###Information###
 
-* [read information about Trie from] (http://www.toptal.com/java/the-trie-a-neglected-data-structure/)
+* [read information about Trie from] (http://www.toptal.com/java/the-trie-a-neglected-data-structure/) - from Toptal
 * [Window Builder] (https://eclipse.org/windowbuilder/)
