@@ -25,6 +25,9 @@ public class Trie implements Dictionary {
 		if (word.length() == 0) {
 			return;
 		}
+		if(words.contains(word)){
+			return;
+		}
 		word = word.toLowerCase();
 		numChildren++;
 		words.addElement(word);
