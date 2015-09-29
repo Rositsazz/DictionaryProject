@@ -82,7 +82,7 @@ public class Test {
 		t = new Trie();
 		t.read("words.txt");
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 507, 333);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -97,17 +97,18 @@ public class Test {
 
 			}
 		});
-		searchButton.setBounds(268, 11, 89, 23);
+		
+		searchButton.setBounds(386, 11, 95, 23);
 		frame.getContentPane().add(searchButton);
 
 		txtEnterAWord = new JTextField();
 		txtEnterAWord.setText("Enter a word here.");
-		txtEnterAWord.setBounds(10, 11, 248, 23);
+		txtEnterAWord.setBounds(10, 11, 366, 23);
 		frame.getContentPane().add(txtEnterAWord);
 		txtEnterAWord.setColumns(10);
 
 		textArea = new JTextArea();
-		textArea.setBounds(10, 56, 347, 154);
+		textArea.setBounds(10, 56, 376, 193);
 		frame.getContentPane().add(textArea);
 
 		d = new JDialog();
@@ -124,7 +125,7 @@ public class Test {
 
 			}
 		});
-		btnAddWord.setBounds(10, 227, 89, 23);
+		btnAddWord.setBounds(10, 260, 105, 23);
 		frame.getContentPane().add(btnAddWord);
 
 		d1 = new JDialog();
@@ -138,9 +139,11 @@ public class Test {
 			public void actionPerformed(ActionEvent arg0) {
 				d1.setVisible(true);
 				showUpdateDialog();
+				txtDescription1.setText("");
+
 			}
 		});
-		btnUpdateWord.setBounds(125, 227, 103, 23);
+		btnUpdateWord.setBounds(125, 260, 131, 23);
 		frame.getContentPane().add(btnUpdateWord);
 
 		d2 = new JDialog();
@@ -156,7 +159,7 @@ public class Test {
 				showRemove();
 			}
 		});
-		btnRemoveWord.setBounds(254, 227, 103, 23);
+		btnRemoveWord.setBounds(266, 260, 120, 23);
 		frame.getContentPane().add(btnRemoveWord);
 
 		d3 = new JDialog();
@@ -172,8 +175,17 @@ public class Test {
 				All();
 			}
 		});
-		btnNewButton.setBounds(367, 227, 57, 23);
+		btnNewButton.setBounds(409, 208, 72, 28);
 		frame.getContentPane().add(btnNewButton);
+
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				t.save();
+			}
+		});
+		btnSave.setBounds(409, 260, 72, 23);
+		frame.getContentPane().add(btnSave);
 	}
 
 	public void showAddDialog() {
@@ -218,6 +230,8 @@ public class Test {
 						descriptionAdd = txtDescription.getText();
 
 						t.add(wordAdd, descriptionAdd);
+						txtNew.setText("");
+						txtDescription.setText("");
 						d.setVisible(false);
 					}
 				});
@@ -266,7 +280,7 @@ public class Test {
 
 		JLabel lblDescription1 = new JLabel("New Description");
 		lblDescription1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblDescription1.setBounds(90, 74, 85, 14);
+		lblDescription1.setBounds(90, 74, 105, 24);
 		contentPanel1.add(lblDescription1);
 		{
 			JButton btnSearch1 = new JButton("Search");
@@ -292,6 +306,8 @@ public class Test {
 						descriptionUpdate = txtDescription1.getText();
 
 						t.update(wordUpdate, descriptionUpdate);
+						txtNew1.setText("");
+						txtDescription1.setText("");
 						d1.setVisible(false);
 					}
 				});
@@ -398,5 +414,4 @@ public class Test {
 		}
 
 	}
-
 }

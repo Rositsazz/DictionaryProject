@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Vector;
 
 public class Trie implements Dictionary {
@@ -25,8 +27,8 @@ public class Trie implements Dictionary {
 		if (word.length() == 0) {
 			return;
 		}
-		if(words.contains(word)){
-			return;
+		if (words.contains(word)) {
+			words.removeElement(word);
 		}
 		word = word.toLowerCase();
 		numChildren++;
@@ -72,8 +74,32 @@ public class Trie implements Dictionary {
 	public void update(String word, String description) {
 		add(word, description);
 	}
+	
+	public String searchToString(String description) {
+		String[] descrpWords = description.split(" ");
+		String result = "";
+		int i = 0;
+		for (String word : descrpWords) {
+			i++;
+			result += word + " ";
+			if (i % 10 == 0) {
+				result += "\n";
+			}
+		}
+		return result;
+	}
 
+	private boolean isAvailable(String word){
+		if(words.contains(word)){
+			return true;
+		}
+		return false;
+	}
+	
 	public String search(String word) {
+		if(!isAvailable(word)){
+			return "Word is not in the dictionary!";
+		}
 		word = word.toLowerCase();
 		if (word.length() == 0) {
 			return " ";
@@ -104,7 +130,6 @@ public class Trie implements Dictionary {
 	public StringBuilder showAll() {
 		StringBuilder result = new StringBuilder();
 		try {
-
 			for (String word : words) {
 				result.append(word + " : " + search(word) + "\n");
 			}
@@ -144,7 +169,7 @@ public class Trie implements Dictionary {
 			bw.write(content);
 			bw.close();
 
-			System.out.println("Done");
+//			System.out.println("Done");
 
 		} catch (IOException e) {
 			e.printStackTrace();
