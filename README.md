@@ -1,10 +1,9 @@
 ## DictionaryProject ##
 
-Dictionary - A project using Trie
+Dictionary - A project using Trie Algorithm
 
- //TODO Tasks
-- read about Window Builder, DB, Trie & Algorithms 
-- bot(Python) - to collect the words and the descriptions
+
+- using Window Builder
 
 
 ###Information###
